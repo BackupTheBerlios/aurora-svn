@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+  
+<tests>
+    <test1><document>
+  <element>text()</element>
+</document></test1>
+    <test2><![CDATA[This is a test document. This is a test document. This is a test
+document. This is a test document. This is a test document. This is a
+test document. This is a test document. This is a test document. This
+is a test document. This is a test document. This is a test
+document. This is a test document. This is a test document. This is a
+test document. This is a test document. This is a test document. This
+is a test document. This is a test document. This is a test
+document. This is a test document. This is a test document. This is a
+test document. This is a test document. This is a test document. This
+is a test document. This is a test document. This is a test
+document. This is a test document. This is a test document. This is a
+test document.
+
+
+
+]]></test2>
+    <test3>
+      
+    <document>
+  <element>text()</element>
+</document></test3>
+    <test4>
+      
+    <document>
+  <element>text()</element>
+</document></test4>
+
+    <test5>1</test5>    
+    <test6>1</test6>
+    <test7>0</test7>
+
+  </tests>
+
+

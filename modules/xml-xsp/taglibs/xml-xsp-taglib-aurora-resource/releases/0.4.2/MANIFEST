@@ -1,0 +1,12 @@
+Resource.pm
+CHANGES
+MANIFEST
+Makefile.PL
+README
+examples/00resource.xsp
+examples/00resource.out
+examples/test.txt
+examples/test.xml
+t/00basic.t
+t/01examples.t
+
