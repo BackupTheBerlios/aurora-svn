@@ -1,0 +1,36 @@
+Revision history for XML::SAX2Object
+
+0.2.0 (03-04-2004)
+  - Added more tests dealing with namespacing
+  - Fixed default namespace/prefix values
+  - Added nsignore option to builder/generator
+  - Made generator output more deterministic
+  - Fixed copyright notice
+
+0.0.5 (14-02-2002)
+  - Added nsexpand option to generator
+  - Added dictionary option for user defined plurals
+
+0.0.4 (14-02-2002)
+  - Broken out pluralize options into XML::SAX2Object::Inflect
+  - Fixed pluralize behaviour
+  - Added documentation & README
+
+0.0.3 (12-02-2002)
+  - Added generator
+  - Added skiproot option to generator
+  - Added namespace and nsmap options to generator
+  - Added pluralize option to generator
+
+0.0.2 (29-01-2002)
+  - Added builder
+  - Added pluralize option to builder
+  - Added normalize whitespace option to builder
+  - XML::SAX2Object reader method now figures out the source type
+    automatically
+  - Added skiproot option to builder
+  - Added namespace, nsexpand and nsmap options to builder
+
+0.0.1 (29-01-2002)
+  - Original version
+
