@@ -53,7 +53,7 @@ sub _receive {
     $response = HTTP::Response->new(RC_INTERNAL_SERVER_ERROR);
     $response->protocol('HTTP/1.1');
   }
-  if($response->is_error && length($response->content) == 0) {
+  if($response->is_error && !$response->content) {
     $response->content($response->error_as_HTML);
   }
 
