@@ -80,13 +80,11 @@ sub _flushed {
   logaccess($request->header('host'),
 	    $object->{Addr},
 	    (join ' ', $request->method,
-	     (($uri->query)? $uri->path : (join '?', $uri->path, $uri->query)),
+	     (($uri->query)? (join '?', $uri->path, $uri->query) :  $uri->path),
 	     $request->protocol),
 	    $response->code,
 	    $request->header('referer'),
-	    $request->header('user-agent'),
-	   );
-
+	    $request->header('user-agent'));
   delete $heap->{request};
   delete $heap->{response};
   delete $heap->{wheel};

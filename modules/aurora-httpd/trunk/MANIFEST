@@ -9,3 +9,4 @@ lib/Aurora/HTTPD/Server/Session.pm
 lib/Aurora/HTTPD/Server.pm
 lib/Aurora/HTTPD/Log.pm
 
+META.yml                                 Module meta-data (added by MakeMaker)

@@ -7,7 +7,7 @@ use Aurora::HTTPD::Server;
 
 use vars qw/$VERSION $DEBUG/;
 
-$VERSION = '0.4.3';
+$VERSION = '0.4.4';
 $DEBUG = 3;
 
 use constant NSMAP =>
