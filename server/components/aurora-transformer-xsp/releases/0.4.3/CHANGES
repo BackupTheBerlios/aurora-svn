@@ -1,0 +1,29 @@
+Revision history for Aurora::Component::Pipeline::Transformer::XSP
+
+0.4.3 (10-04-2004)
+  - Fixed warnings under Perl 5.8
+  - Updated documentation
+
+0.4.2 (03-07-2002) 
+  - Now rethrows Aurora::Exceptions (needed for exception taglibs and redirects)
+  - Fixed typo
+
+0.4.1 (29-03-2002)
+  - XSP Pages now registered against URI path rather than complete URI.
+  - Added documentation
+
+0.4.0 (08-03-2002)
+  - Updated to work with latest Aurora and XML::XSP API changes
+
+0.2.1 
+  - Updated to work with latest version of XML::XSP
+
+0.2.0 (19-11-2001)
+  - Minor bug fixes
+
+0.1.3
+  - Fixed to work with revisions to the XML::XSP API
+
+0.0.1 
+  - Original version
+
