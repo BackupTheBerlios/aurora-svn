@@ -1,0 +1,24 @@
+Revision history for XML::XSP::Taglib::Util
+
+0.4.2 (10-04-2004)
+  - Fixed cwd() warning
+  - Updated documentation
+
+
+0.4.1 (13-05-2002)
+  - Updated taglib to work with XML::LibXML 1.49
+
+0.4.0 (25-02-2002)
+  - Updated Taglib to fix bugs introducted by the changes in the
+    XML::XSP API.
+  - Fixed dependancy information
+  - Add Documentation
+
+0.2.0 (19-11-2001)
+  - Tweaked stylesheet
+  - Tweaked test harness
+  - Moved over to using as-expr helper template
+
+0.0.1 
+  - Original version
+

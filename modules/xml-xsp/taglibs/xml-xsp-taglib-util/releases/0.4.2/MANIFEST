@@ -1,0 +1,13 @@
+CHANGES
+MANIFEST
+Makefile.PL
+README
+examples/00time.xsp
+examples/01file.xsp
+examples/00time.out
+examples/02uri.xsp
+examples/01file.out
+examples/02uri.out
+t/00basic.t
+t/01examples.t
+Util.pm
