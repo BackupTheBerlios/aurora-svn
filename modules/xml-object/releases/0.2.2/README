@@ -1,0 +1,65 @@
+XML::Object 
+===========
+
+DESCRIPTION
+
+This library provides a simple wrapper around an XML document,
+enabling access to the document as if it was a native Perl
+object. It provides an excellent way to quickly integrate ad-hoc
+querying and manipulation of XML fragments under Perl, without needing
+to write custom parsers, etc. Features include:
+
+* Object Orientated API
+* Optional Tied Hash API
+* Namespace Support 
+* Support for creation/handling of XML::Object fragments
+* Auto vivify node paths
+* Directly alters the underlying input XML document
+
+Given that the library provides direct access to the underlying XML
+document (without parsing it into some itermediate state), it is best
+suited for situations where only limited querying or maniplulation is
+required. If large documents need to be handled or intensive
+read/write access to the document is required, then you are probably
+better off using either SAX or something like XML::Simple.
+
+STATUS
+
+XML::Object should be considered alpha quality software and lacks
+extensive testing on a wide variety of platforms.
+
+2004|04|10 Bug fixes 
+
+2002|05|25 First public release of XML::Object
+
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires:
+
+   XML::LibXML  (>= 1.49)
+
+COPYRIGHT AND LICENCE
+
+You may use this module under the terms of the Artistic or GNU Pulic
+licenses your choice. Also, a portion of XML::Filter::Dispatcher::Parser
+is covered by:
+
+  The Parse::Yapp module and its related modules and shell scripts are
+  copyright (c) 1998-1999 Francois Desarmenien, France. All rights
+  reserved.
+
+  You may use and distribute them under the terms of either the GNU
+  General Public License or the Artistic License, as specified in the
+  Perl README file.
+
+(c)2002-2004 Darren Graves (darren@iterx.org), All rights reserved.
