@@ -1,0 +1,14 @@
+Revision history for Aurora::HTTPD
+
+0.4.3 (09-04-2004)
+  - Fixed signal handling under recent version of POE
+
+0.4.2 (03-07-2002)
+  - Added checks to ensure that the Aurora instance is successfully
+    created
+
+0.4.1 (29-03-2002)
+  - Amended documentation
+
+0.4.0 (09-03-2002)
+  - Original version

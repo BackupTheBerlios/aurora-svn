@@ -1,0 +1,73 @@
+Aurora::HTTPD
+=============
+
+DESCRIPTION
+
+Aurora::HTTPD is a pure perl, lightweight HTTPD for Aurora, built upon
+the POE Component Framework. It is designed primarily to be used in a
+development environment or internally within an organisation, where
+the deployment of a full blown webserver (such as Apache) isn't
+justified. Under no circumstances should this server be deployed in a
+hostile environment, since little serious thought has been given to
+the servers security model. 
+
+The HTTPD currently supports:
+
+* Virtual Hosts
+* Access and Error logging
+
+Further information about Aurora can be found at:
+
+* http://iterx.org/software/aurora
+
+STATUS
+
+Aurora::HTTPD should be considered as alpha quality software and has
+not been tested extensively.
+
+2004|04|09 Bug fixes
+2002|03|09 First public release of Aurora::HTTPD
+
+Currently, the Aurora::HTTPD doesn't support:
+
+* PUT Requests
+* Multipart POST Requests
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDANCIES
+
+This module requires:
+  
+   POE    (>= 0.1901)
+   Aurora (>= 0.4.2)
+
+AUTHOR/LICENCE
+
+This program is free software; you can redistribute it
+and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation;
+either version 2 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public
+License along with this program; if not, write to the Free
+Software Foundation, Inc., 59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.
+
+(c)2001-2004 Darren Graves (darren@iterx.org), All Rights
+Reserved
+
