@@ -1,0 +1,8 @@
+MANIFEST
+CHANGES
+ESQL.pm
+Makefile.PL
+README
+t/00basic.t
+t/01examples.t
+examples/00esql.xsp
