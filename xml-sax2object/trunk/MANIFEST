@@ -1,4 +1,4 @@
-Changes
+CHANGES
 MANIFEST
 Makefile.PL
 README
@@ -18,5 +18,3 @@ t/08arrayref.t
 t/09namespaces.t
 t/10pluralize.t
 t/11sax2object.t
-
-META.yml                                 Module meta-data (added by MakeMaker)
