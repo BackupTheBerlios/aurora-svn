@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:request="http://iterx.org/xsp/aurora/context/request/v1">
+  <tests>
+    <test1><request:method/></test1>
+  </tests>
+</xsp:page>

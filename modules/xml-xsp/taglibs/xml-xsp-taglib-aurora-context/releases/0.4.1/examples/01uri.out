@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+  
+<tests>
+    <test1>http://www.iterx.org/test.cgi?name1=value1;name2=value2</test1>
+    <test2>http</test2>
+    <test3>www.iterx.org</test3>
+    <test4>/test.cgi</test4>
+    <test5>name1=value1;name2=value2</test5>
+  </tests>
+
+

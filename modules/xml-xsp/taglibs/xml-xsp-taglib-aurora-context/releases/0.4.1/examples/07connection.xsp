@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:connection="http://iterx.org/xsp/aurora/context/connection/v1">
+  <tests>	
+    <test1><connection:ip/></test1>
+    <test2><connection:host/></test2>
+    <test3><connection:user/></test3>
+  </tests>
+</xsp:page>

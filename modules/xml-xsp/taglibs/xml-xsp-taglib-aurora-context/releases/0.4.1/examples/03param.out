@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+  
+<tests>
+    <test1>value1</test1>
+    <test2>value2</test2>
+    <test3>default</test3>
+    <test4>3</test4>
+  </tests>
+
+

@@ -1,0 +1,25 @@
+Revision history for XML::XSP::Taglib::Aurora::Context
+
+0.4.1 (10-04-2004)
+  - Updated documentation
+
+0.4.0 (30-03-2002)
+  - Updated to work with latest XSP API
+  - Added in access to connection details
+  - Added documentation
+
+0.2.1 (04-02-2002)
+  - Changed name to XML::XSP::Taglib::Aurora::Context
+  - Changed namespaces and added versioning information
+  - Added option to set dependancies
+  - Added response object
+  - Merged in XML::XSP::Taglib::Aurora::Cookie
+
+0.2.0 (19-11-2001)
+  - Updated test harness
+  - Fixed dependancies
+  - Fixed param value evaluation
+
+0.0.1 
+  - Original version
+

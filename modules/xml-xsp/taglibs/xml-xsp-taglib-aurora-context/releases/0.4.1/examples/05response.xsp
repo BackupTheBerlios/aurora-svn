@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:response="http://iterx.org/xsp/aurora/context/response/v1">
+  <tests>
+    <test1><response:code>404</response:code></test1>
+    <test2><response:content-type>text/html</response:content-type></test2>
+    <test3><response:status>DONE</response:status></test3>
+  </tests>
+</xsp:page>
