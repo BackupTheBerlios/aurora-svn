@@ -1,0 +1,34 @@
+Aurora
+======
+
+SUMMARY
+
+Aurora is a Perl based content delivery system, providing a modular
+framework for dynamically repurposing XML content. Aurora includes
+support for XML pipelines, XSP & XSLT transforms, session / connection
+pooling and fine grain caching.
+
+
+STRUCTURE
+
+/server				 : The Aurora server
+  /core				 : The core server & default components
+  /components			 : Additional server components
+    /aurora-plugin-authenticate  : Authentication plugin
+    /aurora-serializer-xhtml2pdf : A PDF serializer
+    /aurora-transformer-xsp      : An XSP transformer
+/modules			 : Modules & tool dependancies for Aurora
+  /aurora-httpd			 : A lightweight standalone HTTPD for Aurora
+  /xml-object			 : A Perl datstructure to XML mapper
+  /xml-sax2object		 : A SAX2 datastructure builder
+  /xml-xsp			 : An XSP transformer
+    /core			 : The core processor
+    /taglibs			 : Additional XSP Taglibs
+
+
+FURTHER INFORMATION
+
+Further information regarding Aurora and its additional modules can be
+found at:
+ 
+   http://iterx.org/software/aurora
