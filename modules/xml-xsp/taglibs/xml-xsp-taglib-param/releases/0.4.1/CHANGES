@@ -1,0 +1,19 @@
+Revision history for XML::XSP::Taglib::Param
+
+0.4.1 (10-04-2004)
+  - Updated documentation
+
+0.4.0 (25-02-2002)
+  - Added more extensive test suite
+  - Updated Taglib to fix bugs introducted by the changes in the
+    XML::XSP API.
+  - Added Documentation
+
+0.2.0 (19-11-2001)
+  - Tweaked test harness
+  - Cleaned up stylesheet 
+  - Fixed param value evaluation
+
+0.0.1 
+  - Original version
+

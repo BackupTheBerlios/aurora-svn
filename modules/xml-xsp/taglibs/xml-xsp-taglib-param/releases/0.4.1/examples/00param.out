@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+  
+<test>
+    <id>my id</id>
+    <name>my name</name>
+    <value>my value</value>
+    <default>default</default>
+  </test>
+
+

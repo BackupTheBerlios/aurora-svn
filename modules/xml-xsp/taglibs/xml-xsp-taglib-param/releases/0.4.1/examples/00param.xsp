@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:param="http://iterx.org/xsp/param/v1">
+  <test>
+    <id><param:id/></id>
+    <name><param:name>default</param:name></name>
+    <value><param:value>default</param:value></value>
+    <default><param:default>default</param:default></default>
+  </test>
+</xsp:page>
