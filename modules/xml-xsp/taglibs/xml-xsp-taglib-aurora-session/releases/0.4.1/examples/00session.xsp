@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:session="http://iterx.org/xsp/aurora/session/v1"
+  create-session="yes">
+  <tests>
+    <test1><session:id/></test1>
+    <test2><session:expires/></test2>
+    <test3><session:user/></test3>
+    <test4><session:is-new/></test4>
+    <test5><session:is-valid/></test5>
+  </tests>
+</xsp:page>

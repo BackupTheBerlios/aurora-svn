@@ -1,0 +1,11 @@
+Session.pm
+CHANGES
+MANIFEST
+Makefile.PL
+README
+examples/00session.xsp
+examples/01manipulate.xsp
+examples/00session.out
+examples/01manipulate.out
+t/00basic.t
+t/01examples.t

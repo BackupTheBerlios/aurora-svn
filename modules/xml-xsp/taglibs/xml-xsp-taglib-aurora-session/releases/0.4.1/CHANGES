@@ -1,0 +1,16 @@
+Revision history for XML::XSP::Taglib::Aurora::Session
+
+0.4.1 (10-04-2004)
+  - Fixed warnings under Perl 5.8
+  - Updated documentation
+
+0.4.0 (31-03-2002)
+  - Updated to work with latest XSP API
+  - Added documentation
+
+0.2.1 (07-01-2002)
+  - Updated test harness
+
+0.0.1 
+  - Original version
+

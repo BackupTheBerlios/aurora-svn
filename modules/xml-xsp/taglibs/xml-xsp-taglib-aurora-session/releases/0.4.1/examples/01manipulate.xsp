@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:session="http://iterx.org/xsp/aurora/session/v1"
+  create-session="yes">
+  <tests>
+    <test1><session:set name="a" value="b"/></test1>
+    <test2><session:remove name="a"/></test2>
+    <test3><session:get name="a"/></test3>
+    <test4><session:set name="a" value="b"/></test4>
+    <test5><session:get name="a"/></test5>
+    <test6><session:save/></test6>
+    <test7><session:get name="a"/></test7>
+    <test8><session:set name="a">c</session:set></test8>
+    <test9><session:get name="a"/></test9>
+    <test10><session:restore/></test10>
+    <test11><session:get name="a"/></test11>
+    <test12><session:invalidate/></test12>
+    <test13><session:get name="a"/></test13>
+  </tests>
+</xsp:page>
