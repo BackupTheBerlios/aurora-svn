@@ -367,8 +367,13 @@ use vars qw/@ISA/;
   }
 
   sub as_string {
-    my ($self, %options) = @_;
-    my ($string);
+    my ($self, $string, %options);
+
+    $self = shift;
+    {
+      no warnings;
+      %options = (scalar @_)? @_ : ();
+    }
 
     if(($options{charset} && $options{charset} ne $self->{charset}) ||
        ($options{content_type} &&
