@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:request="http://iterx.org/xsp/aurora/context/request/v1">
+  <tests>
+    <test1><request:uri/></test1>
+    <test2><request:uri-scheme/></test2>
+    <test3><request:uri-host/></test3>
+    <test4><request:uri-path/></test4>
+    <test5><request:uri-query/></test5>
+  </tests>
+</xsp:page>

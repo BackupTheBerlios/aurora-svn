@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:request="http://iterx.org/xsp/aurora/context/request/v1">
+  <tests>
+    <test1><request:param name="name1"/></test1>
+    <test2><request:param name="name2"/></test2>
+    <test3><request:param name="name3">default</request:param></test3>
+    <test4><request:param name="name3"><xsp:expr>1+2</xsp:expr></request:param></test4>
+  </tests>
+</xsp:page>

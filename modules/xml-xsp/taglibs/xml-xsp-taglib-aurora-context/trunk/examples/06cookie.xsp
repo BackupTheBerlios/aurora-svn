@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:cookie="http://iterx.org/xsp/aurora/context/cookie/v1">
+  <tests>	
+    <test1><cookie:get name="a"/></test1>
+    <test2><cookie:get name="b"/></test2>
+    <test3><cookie:get name="c">default</cookie:get></test3>
+    <test4><cookie:set name="d" expires="1d">cookie</cookie:set></test4>
+  </tests>
+</xsp:page>

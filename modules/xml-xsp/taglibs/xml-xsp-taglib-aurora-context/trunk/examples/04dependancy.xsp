@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:context="http://iterx.org/xsp/aurora/context/v1">
+  <tests>
+    <test1>
+      <context:dependancy>
+	<context:uri>examples/04dependancy.xsp</context:uri>
+	<context:base>
+	  <xsp:expr>use Cwd; cwd();</xsp:expr>
+	</context:base>
+      </context:dependancy>
+    </test1>
+  </tests>
+</xsp:page>
