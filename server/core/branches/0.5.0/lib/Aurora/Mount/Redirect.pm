@@ -51,7 +51,7 @@ sub run {
     index($uri,'file://') == 0 && do {
       unless(-e substr($uri,7) && -r _) {
 	throw Aurora::Exception::Event
-	  (-event => NOT_FOUND
+	  (-event => NOT_FOUND,
 	   -text => (join '','File ',$uri,' is not readable or not found'));
       }
     };
