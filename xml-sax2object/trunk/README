@@ -1,0 +1,59 @@
+XML::SAX2Object
+===============
+
+DESCRIPTION
+
+XML::SAX2Object is Perl library for building Perl datastructures from 
+SAX2 events and vice versa (i.e generating SAX2 events based upon
+datastructure). Key features include:
+
+  * Completely SAX2 based (includes a SAX2 Builder and Generator)
+  * Full Namespace support
+  * Configurable processing
+  * Analyses the XML document for node names that are the plural of a
+    child's and representing them automatically as lists (even if there
+    is only one child).
+
+STATUS
+
+
+XML::SAX2Object can be considered beta quality software, that while
+it has been tested and deployed in live environments, it still lacks
+extensive testing on a wide variety of platforms.
+
+2004|04|03  Improved namespace support and bug fixes.
+
+2002|02|26  Fixed bugs in namespace handling and added a
+	    NamespaceIgnore option, which will cause all elements with
+	    namespaces not declared in the namespace map to be ignored.
+
+2002|02|19  First public release of XML::SAX2Object
+
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires:
+
+   XML::SAX 	     (>= 0.05)   
+   XML::SAX::Writer  (>= 0.39)
+
+Optional modules:
+
+  Lingua::EN:Inflect (>= 1.88)
+
+
+LICENCE & AUTHOR
+
+This module is released under the Perl Artistic Licence and
+may be redistributed under the same terms as perl itself.
+
+(c)2002-2004 Darren Graves (darren@iterx.org), All rights reserved.

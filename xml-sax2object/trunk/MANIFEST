@@ -1,0 +1,22 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+lib/XML/SAX2Object.pm
+lib/XML/SAX2Object/Builder.pm
+lib/XML/SAX2Object/Generator.pm
+lib/XML/SAX2Object/Inflect.pm
+t/00basic.t
+t/01builder.t
+t/02element.t     
+t/03attributes.t
+t/04namespaces.t  
+t/05pluralize.t
+t/06generator.t   
+t/07hashref.t
+t/08arrayref.t
+t/09namespaces.t
+t/10pluralize.t
+t/11sax2object.t
+
+META.yml                                 Module meta-data (added by MakeMaker)
