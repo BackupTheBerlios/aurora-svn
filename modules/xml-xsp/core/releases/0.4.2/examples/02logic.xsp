@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1">
+  <elements>
+    <xsp:logic>
+      sub a { return 'a'};
+    </xsp:logic>
+
+    <element2>    
+      <xsp:logic>
+	sub b {	
+	  my ($value); 
+	  for (my $i = 0; $i &lt; 10; $i++) {
+  	    $value += $i;
+	  }
+	  return $value;
+	}
+      </xsp:logic>
+    </element2>
+	
+    <element3 attribute="value">
+      <xsp:expr>a()</xsp:expr>
+    </element3>
+
+    <element4>
+      <xsp:expr>b()</xsp:expr>
+    </element4>
+
+    <element5>    
+      <xsp:logic>
+	sub c {
+	for (my $i = 0; $i &lt; 3; $i++) {
+  	<element/>
+	}
+	}
+	c();
+      </xsp:logic>
+    </element5>
+
+    <element6>
+      <xsp:expr>c()</xsp:expr>
+    </element6>
+
+
+    <element7>    
+      <xsp:logic>
+	for (my $i = 0; $i &lt; 3; $i++) {
+  	<element><xsp:expr>$i</xsp:expr></element>
+	}
+      </xsp:logic>
+    </element7>
+
+    <element8>    
+      <xsp:logic>	
+	sub d {
+	for (my $i = 0; $i &lt; 3; $i++) {
+  	  <element><xsp:expr>$i</xsp:expr></element>
+	}
+	}
+	d();
+      </xsp:logic>
+    </element8>
+
+    <element9>
+      <xsp:expr>d()</xsp:expr>
+    </element9>
+
+    <element10>
+      <xsp:logic>
+	<element><xsp:expr>d()</xsp:expr></element>
+      </xsp:logic>
+    </element10>
+    
+    <element11>
+      <xsp:logic>
+	<xsp:expr>d()</xsp:expr>
+      </xsp:logic>
+    </element11>
+   
+    <element12>
+      <xsp:logic>
+	<xsp:logic>
+	  sub e { <element/> }
+	</xsp:logic>
+	e();
+      </xsp:logic>
+    </element12>
+
+    <element13>
+      <xsp:logic>
+	if(1) {
+	  <true/>    
+	} 
+	else {      
+	  <false/>    
+	}
+      </xsp:logic>
+    </element13>
+
+    <element14>
+      <xsp:logic>
+	if(!1) {
+	  <true/>    
+	} 
+	else {      
+	  <false/>    
+	}
+      </xsp:logic>
+    </element14>
+ 
+  </elements>
+</xsp:page>
+
+
+
+
+
+
+
+
+
+
+

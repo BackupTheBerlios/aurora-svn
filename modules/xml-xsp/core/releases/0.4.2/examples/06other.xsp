@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1">
+  <xsp:structure>
+    <xsp:include>MyPackage</xsp:include>
+  </xsp:structure>
+  <other>    
+    <xsp:pi target="target1">name=&quot;value&quot;</xsp:pi>
+    <xsp:comment>This is a comment</xsp:comment>
+    <xsp:pi target="target2"><xsp:expr>'name=&#34;value&#34;'</xsp:expr></xsp:pi>
+    <xsp:comment><xsp:expr>'This is a comment'</xsp:expr></xsp:comment>
+    <content>
+      <xsp:expr>
+	<xsp:content>
+	  <node />
+	</xsp:content>
+      </xsp:expr>
+    </content>
+  </other>
+</xsp:page>
+
+
+
+

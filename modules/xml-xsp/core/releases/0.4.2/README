@@ -1,0 +1,89 @@
+XML::XSP
+========
+
+DESCRIPTION
+
+XML::XSP implements a Perl based eXtensibe Server Page (XSP)
+processor, a server side technology tailored to dynamically generating
+XML documents though the use of embeding code (similar to ASP or
+JSP). XML::XSP employs a transform model to evaluate the XSP page,
+enabling precompiled XSP Page transformers, to be cached and used upon
+any source document of the same form. Key advantages derived from this
+model include:
+
+* Higher performance when evaluating documents containing only a few
+  XSP tag.
+
+* Source documents that have differing content, but the same XSP tags
+  can all use the same precompiled XSP Page transformer. 
+
+However this method does have the memory/performance overhead of
+requiring a DOM to be built, though given that XSP is usually used in
+conjuction with an XSLT processor (which also requires a DOM) to apply
+the presentation layer, the impact is minimal.
+
+The XSP processor can also be extended through the use of user defined
+Taglibs. These can be deployed to create additional XSP tags that can
+be embeded within a document and control how they are evaluated.
+
+Further general information about XSP is available from:
+
+    http://xml.apache.org/cocoon/userdocs/xsp/xsp.html
+    http://www.axkit.org/docs/xsp/guide.dkb
+
+
+STATUS
+
+XML::XSP can be considered alpha quality software, since while has
+been tested and deployed in live environments, it still lacks
+extensive testing on a wide variety of platforms.
+
+2004|04|10 Bug fixes & improved test coverage
+
+2002|05|13 Minor bug fixes and improved error handling
+
+2002|02|25 First public release of XML::XSP
+
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires:
+
+   XML::LibXML  (>= 1.49)
+   XML::LibXSLT (>= 1.49)
+   Digest::MD5
+   Error
+
+COPYRIGHT AND LICENCE
+
+This program is free software; you can redistribute it
+and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation;
+either version 2 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public
+License along with this program; if not, write to the Free
+Software Foundation, Inc., 59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.
+
+(c)2001-2004 Darren Graves (darren@iterx.org), All Rights 
+Reserved.
+
+
+
