@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+  
+<tests>
+    <test1>
+      
+    <document>
+  <element>text()</element>
+</document></test1>
+  </tests>
+
+

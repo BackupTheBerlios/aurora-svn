@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:util="http://apache.org/xsp/util/v1">
+  <tests>
+    <test1><util:time format="+00:00"/></test1>
+  </tests>
+</xsp:page>

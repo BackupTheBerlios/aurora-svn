@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:util="http://apache.org/xsp/util/v1">
+  <tests>
+    <test1>
+      <util:include-uri>
+	<util:href>examples/test.xml</util:href>
+      </util:include-uri>
+    </test1>
+  </tests>
+</xsp:page>
