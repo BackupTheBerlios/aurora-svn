@@ -1,0 +1,127 @@
+Aurora
+======
+
+DESCRIPTION
+
+Aurora is a XML based content delivery system, providing a general
+framework with which content can be dynamically repurposed. It is
+particularly well suited for dealing with sites that need to process
+dynamic data.
+
+Features include:
+
+* Embedable
+
+Aurora can either be used directly from within a Perl or embeded into
+3rd party applications such as Apache/mod_perl & Zeus webserver.
+
+* XML Sitemaps
+
+Built in support for server configuration via XML.
+
+* Modular
+
+The framework is completely modular, enabling it to easily be
+customised and extended.
+
+* Pipelines
+
+The framework has build in support for XML pipelines, providing an
+easy mechanism to process and repurpose data.
+
+* Sessions & Connection Pools
+
+Aurora has built in support for session and connection pools.
+
+* Caching
+
+There is advanced caching support, enabling fine grained control over
+what data to cache, including partly processed responses.
+
+Further information regarding Aurora and its additional modules can be
+found at:
+
+   http://iterx.org/software/aurora
+
+STATUS
+
+Aurora can be considered alpha quality software, since while it has been
+tested and deployed in live environments, it still lacks extensive
+testing on a wide variety of platforms.
+
+2004|04|09
+Version 0.4.2 released, featuring initial support for Apache 2 & Zeus
+webservers and numerous bug fixes.
+
+2002|07|03
+Version 0.4.1 of Aurora released. This version primarily contains bug
+fixes to the exception handling mechanism and renables virtual hosting
+support under Apache.
+
+2002|03|29  
+First public release of Aurora
+
+The current list of outstanding tasks for inclusion in forthcoming
+releases include:
+
+* Tutorials & example site
+* Addition of a full test suite
+* Support for SAX pipelines
+* Windows & FastCGI support
+* Distributed caching
+
+INSTALLATION
+
+To install this module, type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+For further details of install time options, type:
+
+  perl Makefile.PL --help
+
+DEPENDENCIES
+
+This module requires:
+
+  Error            (>=0.13)
+  HTTP::Request
+  HTTP::Response
+  LWP::UserAgent  
+  XML::LibXML      (>=1.31)
+  XML::LibXSLT     (>=1.31)
+  XML::SAX2Object  (>=0.0.5)
+
+and depending on the optional install time modules selected:
+
+  Apache           (>=1.26)
+  Apache::Request
+  Compress::Zlib   (>=1.13)
+  DBI              (>=1.20)
+  Digest::MD5
+  MLDBM            (>=2.00)
+  MLDBM::Sync      (>=0.25)
+  Text::Iconv
+  Storable
+
+COPYRIGHT AND LICENCE
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
+USA.
+
+(c)2001-2004 Darren Graves (darren@iterx.org), All Rights Reserved.

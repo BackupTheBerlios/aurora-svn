@@ -1,0 +1,153 @@
+Revision history for Aurora
+
+0.4.2 (09-04-2004)
+  - Fixed bug in call and redirect event handlers
+  - When creating new cookies, the domain now defaults to servers name
+  - Cookies now overloaded to display value
+  - Added missing base method to Aurora::Context::Request
+  - Fixed caching problems with the default server.
+  - Added increased debugging when setting cookies
+  - Fixed Aurora::Config namespace bug
+  - Updated LibXSLT driver to work with XML::LibXML 1.56/XML::LibXSLT 1.53
+  - Fixed warnings under Perl 5.8
+  - Added initial support for Apache 2 & Zeus webservers.
+  - Refactored Makefile.PL
+  - Refactored Aurora Initialisation
+
+0.4.1 (03-07-2002)
+  - Corrected example sitemap
+  - Fixed Aurora to once again work correctly with multiple virtual
+    hosts
+  - Bug fixes for Aurora::Exception handling
+  - Fixed bug with redirects under the default server
+  - Added check to ensure that default base URIs are absolute
+
+0.4.0 (29-03-2002)
+  - Fixed documentation typos
+  - Rewrote Makefile.PL installer
+  - Updated README file
+
+0.3.4 (27-03-2002) 
+  - Add concept of private component instance data
+  - Fixed bug in response cookies handling
+  - Aurora::Resource::is_valid has support for expires headers and for
+    HTTP resources
+  - Added the option to be able to set the content-type header of the
+    response returned, independantly of the underlying base content
+    type
+  - Added database connection pools
+  - Fixed handling of absolute/relative URIs escaping and resolving
+    with respect to a base URI
+  - Added Aurora::Server::base method, which returns the document root
+    for the current server
+
+0.3.3 (23-03-2002) 
+  - Removed unused legacy files
+  - Added documentation
+
+0.3.2 (11-03-2002)
+  - Fixed race condition in cache locking mechanism
+  - Aurora::Context::Response->as_string now uses network returns
+    (incase that the client is picky)
+  - Cleaned up external Aurora API
+  - Cleaned up mod_perl handler
+  - Fixed mod_perl Aurora On/Off configuration pragma
+  - Added support for HEAD requests
+  - Added support for POST requests in the Default Server
+
+0.3.1 (06-03-2002)
+  - Rewrote dependacy checking mechanism
+  - Fixed possible lockup when pipeline flushed
+  - Rewrote internals of LibXSLT transformer
+  - Fixed dependancy checking in LibXSLT transformer
+  - Fixed memory leaks
+
+0.3.0 (28-02-2002)
+  - Cleaned up configuration file namespaces
+  - Updated Aurora::Config to deal correctly with namespaces
+  - Rewrote default log handler
+  - Cleaned up component instance data
+  - Improved logging
+  - Fixed bugs in error handler
+  - Added template debug logging to LibXSLT transformer
+  - Cleaned up interpolation mechanism for context matches
+  - Rewrote context ID creation
+  - Added content handling support, including native DOM support
+  - Fix pipeline components handling of cache="no" option
+  - Renamed Resource producer to File
+  - Rewrote XML, HTML and Text serializers
+  - Tweaked Cache-Control headers
+  - Moved Aurora::Resource to creating an etag as a hexidecimal
+
+0.2.4 (26-02-2002)
+  - Updated README file
+  - Added str2code utility function
+  - Added support to set response code in serializers
+
+0.2.3 (29-01-2002)
+  - User and anonymous sessions now use different cookies (so a user
+    can have both)
+  - Removed supurious reference to Apache::Constants from
+    Aurora::Mount
+  - Added general ERROR & ANY catch event types to Aurora::Mount
+  - Added a work around for params contains : for LibXSLT 
+  - Fixed Aurora::Context::Request param handling for parameters
+    with no value
+  - Moved config system over to using XML::SAX2Object
+  - Added Text Serializer
+  - Fixed broken cache path permissions
+  - Tweaked response headers, now sets expires to now and adds
+    no-cache pragma for dynamic data
+
+0.2.2 (07-01-2002)
+  - Broke caches into seperate directories per server
+  - Localised caches to a per server basis
+  - Fixed broken error handling
+  - Removed in -memory ram cache for Aurora::Cache::Simple, only
+    works for static data.
+  - Added first pass at a session handling implementation
+  - Fixed cookie expiry values
+  - Fixed bug in cookie handling mechanism
+  - Enabled Aurora::Util::str2(time|size) to cope with negative
+    values
+  - Fixed cache & session file permissions
+  - Added Aurora::Util::File utility functions
+  - Correctly autobuild cache and session directory paths
+
+0.2.1 (04-01-2002)
+  - Moved over to using XML::LibXML 1.30
+  - Fixed parameter type checking on Aurora::Context::(Request|Response)
+  - Aurora::Resource now passes correct host header (for requests to
+    virtual hosts)
+  - Improved redirect logging
+  - Aurora::Resource::RIB caches HTTP body
+  - Added content-type determination for resource files
+  - Fixed cache sync problems
+  - Added optional in-memory ram cache for Aurora::Cache::Simple
+  - Now use methods to directly access the tied hash in
+    Aurora::Cache::Simple
+  - Added stylesheet caching to LibXSLT Transformer
+  - Added option to disable dependancy checks on LibXSLT Transformer
+  - Fixed response so that the correct HTTP code is returned 
+  - Fixed LibXML/LibXSLT callbacks for multiple instances
+  - Fixed LibXSLT transformer to work with null URI params values
+
+
+0.2.0 (19-11-2001)
+  - Added HTML Serializer
+  - Added IP Matcher
+  - Fixed file redirect mechanism in Aurora::Server::mod_perl
+  - Fixed event handling mechanism
+  - Added Call event + rewrote Redirect event handler
+  - Fixed caching bug
+  - Fixed cache permissions bug
+  - Added connection context object
+  - Added concept of current user to connection object
+  - Added cookie support
+  - Fixed response headers (expires, last -modified & content -type)
+  - Object expires setting now obeyed
+  - Fixed gzip encoding bug with HTML Serializer
+  - Fixed context ID generation
+  - Added DECLINE option for redirect mount (e.g for CGI scripts)
+  - Fixed query string parameter passing in LibXSLT transformer
+  - Cleaned up several warnings
