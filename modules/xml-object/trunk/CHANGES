@@ -1,0 +1,43 @@
+Revision history for XML::Object
+
+0.2.2 (10-04-2004)
+  - Can now specify Perl class for fragments to be blessed into
+  - Now correctly handles fatal XPath query errors
+  - Updated documentation
+
+0.2.1 (03-07-2002)
+  - Build XPath grammer parser to include Parse::Yapp::Driver
+  - Fixed error reporting in XPath grammer parser
+  - Fixed minor driver bugs while dealing with XML fragments
+  - Added support for file uris
+  - Fixed fetching as object to work with text nodes
+  - LibXML fetch method now supports xpaths that result in a literal value
+  - Fixed problems when trying to inherit from XML::Object
+  - Fixed replacing of entire document body with new fragment
+  - Fragments now inherit values from parents
+
+0.2.0 (25-05-2002)
+  - Fixed numerous namespace bugs
+  - Added serialize/deserialize object methods
+  - Added memory leak tests
+  - Added benchmark script
+  - Added SAX and DOM support methods
+  - Added option to disable automatically vivify nodes
+  - Added support for adding, removing and cloning object fragments
+  - Added documentation
+
+0.0.6 (19-05-2002)
+  - Can now store values to multiple nodes, provided that the node
+    already exists
+  - Added basic function support (position(), last(), local-name(),
+    name() and namespace-uri())
+
+0.0.5 (18-05-2002)
+  - Added basic support for XPath predicates
+
+0.0.4 (17-05-2002)
+  - Added basic namespace support for node/attribute creation
+  - Added basic support for XPath axis
+
+0.0.3 (14-05-2002)
+  - Original version

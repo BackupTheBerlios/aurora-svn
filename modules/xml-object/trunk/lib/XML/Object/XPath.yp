@@ -1,0 +1,578 @@
+# Yacc Grammar by James Clark
+#
+# Based upon bits of XML::Filter::Dispatcher
+# by Barrie Slaymaker <barries@slaysys.com>
+#
+
+%token QNAME
+%token NAME_COLON_STAR
+%token DOT
+%token DOT_DOT
+%token AT
+%token AXIS_NAME
+%token FUNCTION_NAME
+%token COMMENT
+%token PI
+%token TEXT
+%token NODE
+%token STAR
+%token LPAR
+%token RPAR
+%token LSQB
+%token RSQB
+%token LITERAL
+%token NUMBER
+%token COLON_COLON
+%token DOLLAR_QNAME
+%token SLASH
+%token SLASH_SLASH
+%token VBAR
+%token COMMA
+%token PLUS
+%token MINUS
+%token EQUALS
+%token GT
+%token LT
+%token GTE
+%token LTE
+%token MULTIPLY
+%token AND
+%token OR
+%token MOD
+%token DIV
+# %token QUO
+
+## We also catch some Perl tokens so we can give useful advice
+%token EQUALS_EQUALS
+%token VBAR_VBAR
+%token AMP_AMP
+
+%%
+
+expr :
+    or_expr
+    ;
+
+or_expr :
+    and_expr
+    | or_expr OR and_expr                  {
+      die "XPath expression 'or' not supported\n";
+    }
+    | or_expr VBAR_VBAR and_expr           {
+        die "XPath uses 'or' instead of Perl's '||'\n";
+    }
+    ;
+
+and_expr :
+    equality_expr
+    | and_expr AND equality_expr           {
+      my ($expr);
+      $expr = (ref $_[1] eq 'ARRAY')? $_[1] : [$_[1]];
+      push @{$expr}, $_[3];
+      return $expr;
+    }
+    | and_expr AMP_AMP equality_expr       {
+        die "XPath uses 'and' instead of Perl's '&&'\n";
+    }
+    | and_expr AMP equality_expr       {
+        die "XPath uses 'and' instead of Perl's '&'\n";
+    }
+    ;
+
+equality_expr :
+    relational_expr
+    | equality_expr EQUALS relational_expr      {
+      my ($expr);
+      $expr = ((ref $_[1] eq 'CODE')?
+	       $_[1]->($_[0], undef, undef, $_[3]) :
+	       $_[1]);
+    SWITCH:{
+	UNIVERSAL::isa($expr, 'XML::Object::XPath::Node') && do {
+	  $expr->value($_[3]);
+	  last SWITCH;
+	};
+	UNIVERSAL::isa($expr, 'XML::Object::XPath::Function') && do {
+	  $expr->value($_[3]);
+	  last SWITCH;
+	}
+      }
+      return $expr;
+    }
+    | equality_expr BANG_EQUALS relational_expr {
+      die "XPath expression != not supported\n";
+    }
+    | equality_expr EQUALS_EQUALS relational_expr {
+      die "XPath uses '=' instead of Perl's '=='\n";
+    }
+    ;
+
+relational_expr :
+    additive_expr
+    | relational_expr LT additive_expr    { 
+      die "XPath expression '<' not supported\n";
+    }
+    | relational_expr GT additive_expr    {
+      die "XPath expression '>' not supported\n";
+    }
+    | relational_expr LTE additive_expr   {
+      die "XPath expression '<=' not supported\n";
+    }
+    | relational_expr GTE additive_expr   {
+      die "XPath expression '>=' not supported\n";
+    }
+    ;
+
+additive_expr :
+    multiplicative_expr
+    | additive_expr PLUS multiplicative_expr  {
+      die "XPath expression '+' not supported\n";
+    }
+    | additive_expr MINUS multiplicative_expr {
+      die "XPath expression '-' not supported\n";
+    }
+    ;
+
+multiplicative_expr :
+    unary_expr
+    | multiplicative_expr MULTIPLY unary_expr {
+      die "XPath expression '*' not supported\n";
+    }
+    | multiplicative_expr DIV unary_expr      {
+      die "XPath expression 'div' not supported\n";
+    }
+    | multiplicative_expr MOD unary_expr      {
+      die "XPath expression 'mod' not supported\n";
+    }
+    ;
+
+unary_expr :
+    union_expr
+    | MINUS unary_expr                        {
+      die "XPath expression '-' not supported\n";
+    }
+    ;
+
+union_expr :
+    path_expr
+    | union_expr VBAR path_expr          {
+      die "XPath expression '|' not supported\n";
+    }
+    ;
+
+path_expr :
+    location_path
+    | primary_expr predicates segment    {
+        if ( defined $_[2] ) {
+            die "This XPath implementation has no node sets, (expression)[predicate] is not supported\n";
+        }
+        if ( defined $_[3] ) {
+            die "This XPath implementation has no node sets, (expression)/path is not supported\n";
+        }
+        $_[1];
+    }
+    ;
+
+segment :
+    /* empty */
+    | SLASH relative_location_path
+    | SLASH_SLASH relative_location_path
+    ;
+
+location_path :
+    relative_location_path
+    | absolute_location_path
+    ;
+
+absolute_location_path :
+    SLASH                                {}
+    | SLASH relative_location_path       {
+      my ($document, $path);
+      $document = $_[0]->{USER}->{Driver}->document($_[1]);
+      $path = (ref $_[2] eq 'CODE')? $_[2]->($_[0]) : $_[2];
+      $document->chain($path);
+      $document;
+    }
+    | SLASH_SLASH relative_location_path {
+      die "Only absolute paths are supported\n";
+    };
+
+
+
+relative_location_path :
+    step
+    | relative_location_path SLASH step    {
+      my ($path);
+      $path = (ref $_[1] eq 'CODE')? $_[1]->($_[0]) : $_[1];
+      return (ref $_[3] eq 'CODE')?
+	$_[3]->($_[0], $path, $_[2]) : $path;
+    }
+    | relative_location_path SLASH_SLASH step {
+      die "Only absolute paths are supported\n";
+    }
+    ;
+
+step :
+    axis node predicates       {
+      my ($node, $axis, $qname, $predicates);
+      ($axis, $qname, $predicates) = @_[1..3];
+      return undef unless defined $qname;
+      if(ref $axis eq 'CODE') {
+	return $axis->(@_);
+      }
+      $node = $_[0]->{USER}->{Driver}->element($qname, $predicates);
+      return sub {
+	($_[1])? do { $_[1]->chain($node); $_[1] } : $node;
+      };
+    }
+    | DOT                      {
+      return sub { $_[1] }
+    }
+    | DOT_DOT                  {
+      return sub {
+	($_[1])? $_[1]->unchain : die "No parent node supplied\n";
+	return $_[1];
+      };
+    }
+    ;
+
+axis:
+    /* empty */                 {  }
+    | AXIS_NAME COLON_COLON     {
+      my ($name);
+      $name = $_[1];
+    SWITCH: {
+	($name eq 'child') && do {
+	  return undef;
+	};
+	($name eq 'attribute') && do {
+	  return sub {
+	    my ($attribute);
+	    $attribute = $_[0]->{USER}->{Driver}->attribute($_[2], $_[3]);
+	    return sub {
+	      ($_[1])? do { $_[1]->chain($attribute); $_[1] } : $attribute;
+	    };
+	  };
+	};
+	($name eq 'self') && do {
+	  return sub { sub { $_[1] } };
+	};
+	($name eq 'parent') && do {
+	  return sub {
+	    return sub {
+	      ($_[1])? $_[1]->unchain : die "No parent node supplied\n";
+	      return $_[1];
+	    };
+	  };
+	};
+      };
+      die "Xpath ${name}:: axis not supported\n";
+    }
+    | AT                        {
+      return sub {
+	my ($attribute);
+	$attribute = $_[0]->{USER}->{Driver}->attribute($_[2],$_[3]);
+	return sub {
+	  ($_[1])? do { $_[1]->chain($attribute); $_[1] } : $attribute;
+	};
+      };
+    }
+    ;
+
+predicates :
+    /* empty */
+    | predicates LSQB expr RSQB {
+      my ($predicates);
+      $predicates = $_[1]? $_[1] : [];
+      push @{$predicates},
+	((ref $_[3] eq 'ARRAY')? @{$_[3]} : $_[3]);
+      return $predicates;
+    }
+    ;
+
+primary_expr :
+    DOLLAR_QNAME     {
+      die "XPath parameters not supported\n";
+    }
+    | LPAR expr RPAR
+    | LITERAL        {
+      my ($literal);
+      $literal = ${$_[1]};
+      $literal =~ s/^[\'\"](.*)[\'\"]$/$1/;
+      return $literal;
+    }
+    | NUMBER         {
+      return ${$_[1]};
+    }
+    | function_call
+    ;
+
+function_call :
+    FUNCTION_NAME LPAR opt_args RPAR {
+      return $_[0]->{USER}->{Driver}->function($_[1], $_[3]);
+    }
+    ;
+
+opt_args :
+    /* empty */             {  }
+    | args
+    ;
+
+args :
+    expr              {
+        [ $_[1] ];
+    }
+    | args COMMA expr {
+      push @{$_[1]}, $_[3];
+      $_[1];
+    }
+    ;
+
+node :
+    QNAME                           {  $_[1]  }
+    | STAR                          {
+      die "Multiple node references not supported\n";
+    }
+    | NAME_COLON_STAR               {
+      die "Multiple node references not supported\n";
+    }
+    | PI LPAR opt_literal RPAR      {
+      die "XPath pi() node not supported\n";
+    }
+    | COMMENT LPAR RPAR             {
+      die "XPath comment() node not supported\n";
+    }
+    | TEXT LPAR RPAR                { }
+    | NODE LPAR RPAR                { '' }
+    ;
+
+opt_literal :
+    /* empty */
+    | LITERAL { }
+    ;
+
+%%
+
+my %tokens = (qw(
+    .           DOT
+    ..          DOT_DOT
+    @           AT
+    *           STAR
+    (           LPAR
+    )           RPAR
+    [           LSQB
+    ]           RSQB
+    ::          COLON_COLON
+    /           SLASH
+    //          SLASH_SLASH
+    |           VBAR
+    +           PLUS
+    -           MINUS
+    =           EQUALS
+    !=          BANG_EQUALS
+    >           GT
+    <           LT
+    >=          GTE
+    <=          LTE
+
+    ==          EQUALS_EQUALS
+    ||          VBAR_VBAR
+    &&          AMP_AMP
+    &           AMP
+),
+    "," =>      "COMMA"
+);
+
+my $simple_tokens =
+    join "|",
+        map
+            quotemeta,
+            reverse
+                sort {
+                    length $a <=> length $b
+                } keys %tokens;
+
+my $NCName = "(?:[a-zA-Z_][a-zA-Z0-9_.-]*)"; ## TODO: comb. chars & Extenders
+
+my %NodeType = qw(
+    node                   NODE
+    text                   TEXT
+    comment                COMMENT
+    processing-instruction PI
+);
+
+my $NodeType = "(?:" .
+    join( "|", map quotemeta, sort {length $a <=> length $b} keys %NodeType ) .
+    ")";
+
+my $AxisName = "(?:" .  join( "|", split /\n/, <<AXIS_LIST_END ) . ")" ;
+ancestor
+ancestor-or-self
+attribute
+child
+descendant
+descendant-or-self
+following
+following-sibling
+namespace
+parent
+preceding
+preceding-sibling
+self
+AXIS_LIST_END
+
+my %preceding_tokens = map { ( $_ => undef ) } ( qw(
+    @ :: [
+    and or mod div
+    *
+    / // | + - = != < <= > >=
+
+    == & && ||
+    ),
+    "(", ","
+) ;
+
+sub debugging () { 0}
+
+sub lex {
+    my ( $p ) = @_;
+    my $d = $p->{USER};
+    my $input = \$d->{Input};
+
+    ## This needs to be more contextual, only recognizing axis/function-name
+    if ( ( pos( $$input ) || 0 ) == length $$input ) {
+        $d->{LastToken} = undef;
+        return ( '', undef );
+    }
+
+    my ( $token, $val ) ;
+    ## First do the disambiguation rules:
+
+    ## If there is a preceding token and the preceding token is not
+    ## one of "@", "::", "(", "[", "," or an Operator,
+    if ( defined $d->{LastToken}
+        && ! exists $preceding_tokens{$d->{LastToken}}
+    ) {
+        ## a * must be recognized as a MultiplyOperator
+        if ( $$input =~ /\G\s*\*/gc ) {
+            ( $token, $val ) = ( MULTIPLY => "*" );
+        }
+        ## an NCName must be recognized as an OperatorName.
+        elsif ( $$input =~ /\G\s*($NCName)/gc ) {
+            die "Expected and, or, mod or div, got '$1'"
+                unless 0 <= index "and|or|mod|div", $1;
+            ( $token, $val ) = ( uc $1, $1 );
+        }
+    }
+
+    ## NOTE: \s is only an approximation for ExprWhitespace
+    unless ( defined $token ) {
+        $$input =~ m{\G\s*(?:
+            ## If the character following an NCName (possibly after
+            ## intervening ExprWhitespace) is (, then the token must be
+            ## recognized as a NodeType or a FunctionName.
+
+            ($NCName)\s*(?=\()
+
+            ## If the two characters following an NCName (possibly after
+            ## intervening ExprWhitespace) are ::, then the token must be
+            ## recognized as an AxisName
+
+            |($NCName)\s*(?=::)
+
+            |($NCName:\*)                           #NAME_COLON_STAR
+            |((?:$NCName:)?$NCName)                 #QNAME
+            |('[^']*'|"[^"]*")                      #LITERAL
+            |(-?\d+(?:\.\d+)?|\.\d+)                #NUMBER
+            |\$((?:$NCName:)?$NCName)               #DOLLAR_QNAME
+            |($simple_tokens)
+        )\s*}gcx;
+
+        ( $token, $val ) =
+            defined $1  ? (
+                exists $NodeType{$1}
+                    ? ( $NodeType{$1}, $1 )
+                    : ( FUNCTION_NAME => $1 )
+            ) :
+            defined $2  ? (
+                0 <= index( $AxisName, $2 )
+                    ? ( AXIS_NAME => $2 )
+                    : die "Expected an Axis Name, got '$2' at ",
+                        pos $p->{USER}->{Input},
+                        "\n"
+            ) :
+            defined  $3 ? ( NAME_COLON_STAR  =>  $3 ) :
+            defined  $4 ? ( QNAME            =>  $4 ) :
+            defined  $5 ? ( LITERAL          =>  do {
+                    my $s = substr( $5, 1, -1 );
+                    $s =~ s/([\\'])/\\$1/g;
+                    bless \"'$s'", "string constant";
+                }
+            ) :
+            defined  $6 ? ( NUMBER           =>  bless \"$6", "number constant" ) :
+            defined  $7 ? ( DOLLAR_QNAME     =>  $7 ) :
+            defined  $8 ? ( $tokens{$8}      =>  $8 ) :
+            die "Failed to parse '$$input' at ",
+                pos $$input,
+                "\n";
+
+        ## the parser needs to know whether an path expression is being
+        ## parsed in a predicate or not so it can deal with paths
+        ## using immediate code in predicates instead of converting them
+        ## to incremental code run as precursors.
+    #    if ( $p->{USER}->{ExitedPredicate} ) {
+    #        --$XFD::predicate_depth;
+    #    }
+         $p->{USER}->{ExitedPredicate} = $token eq "RSQB";
+
+#        if ( $token eq "LSQB" ) {
+#            ++$XFD::predicate_depth;
+ #       }
+    }
+
+    $d->{LastToken} = $val;
+
+    if ( debugging ) {
+        warn
+            "'",
+            $$input,
+            "' (",
+            pos $$input,
+            "):",
+            join( " => ", map defined $_ ? $_ : "<undef>", $token, $val ),
+            "\n";
+    }
+
+    return ( $token, $val );
+}
+
+sub error {
+  my ( $p ) = @_;
+  warn("Couldn't parse '$p->{USER}->{Input}' at position ",
+       pos $p->{USER}->{Input}, "\n");
+}
+
+sub compile {
+  my ($self, $driver, $xpath) = @_;
+  my ($parser, $result);
+  $parser = XML::Object::XPath->new(yylex   => \&lex,
+				    yyerror => \&error);
+
+  $parser->{USER}->{Driver} = $driver;
+  #$parser->{USER}->{ExitedPredicate} = 0;
+  $parser->{USER}->{Input} = $xpath;
+  return $parser->YYParse;
+}
+
+package XML::Object::XPath::Node;
+
+sub new {
+  die "Abstract class\n";
+}
+
+package XML::Object::XPath::Function;
+
+sub new {
+  die "Abstract class\n";
+}
+
+1;
