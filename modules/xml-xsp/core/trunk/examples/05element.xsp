@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1">
+  <elements>
+    <xsp:element name="element1"/>
+
+    <xsp:element name="element2">value</xsp:element>
+
+    <xsp:element name="element3"><element>value</element></xsp:element>
+
+    <xsp:element name="element4">
+      <element attribute="value">value</element>
+    </xsp:element>
+
+    <xsp:element name="element5">
+      <xsp:element name="element">value</xsp:element>
+    </xsp:element>
+
+    <xsp:element name="element6">
+      <element><xsp:element name="element">value</xsp:element></element>
+    </xsp:element>
+
+    <xsp:element name="element7">
+      <xsp:attribute name="attribute">value</xsp:attribute>
+    </xsp:element>
+
+
+    <xsp:element name="element8">
+      <xsp:attribute name="attribute">value</xsp:attribute>
+      <xsp:expr>
+	for(my $i = 0; $i &lt; 3; $i++) {
+	<element>value</element>
+	}
+      </xsp:expr>
+    </xsp:element>
+
+    <xsp:element name="element9">
+      <xsp:attribute name="attribute">value</xsp:attribute>
+      <xsp:logic>
+	for(my $i = 0; $i &lt; 3; $i++) {
+	<element>value</element>
+	}
+      </xsp:logic>
+    </xsp:element>
+
+    <xsp:element name="element10">
+      <xsp:attribute name="attribute">value</xsp:attribute>
+      <xsp:logic>
+	for(my $i = 0; $i &lt; 3; $i++) {
+	<element><xsp:expr>$i</xsp:expr></element>
+	}
+      </xsp:logic>
+    </xsp:element>
+
+    <xsp:element name="element11">
+      <xsp:attribute name="attribute1">value</xsp:attribute>
+      <xsp:attribute 
+	name="attribute2"
+	prefix="myprefix"
+	namespace="http://localhost/namespaces/mynamespace"
+	>value</xsp:attribute>
+    </xsp:element>
+
+    <xsp:element 
+      name="element12"
+      prefix="myprefix1"
+      namespace="http://localhost/namespaces/mynamespace1"
+      >
+      <xsp:attribute 
+	name="attribute1"
+	prefix="myprefix1"
+	namespace="http://localhost/namespaces/mynamespace1"
+	>value</xsp:attribute>
+      <xsp:attribute 
+	name="attribute2"
+	prefix="myprefix2"
+	namespace="http://localhost/namespaces/mynamespace2"
+	>value</xsp:attribute>
+    </xsp:element>
+
+
+    <element13>
+      <xsp:logic>
+	if(1) {
+	  <xsp:element name="true"/>    
+	} 
+	else {      
+	  <xsp:element name="false"/>    
+	}
+      </xsp:logic>
+    </element13>
+
+    <element14>
+      <xsp:logic>
+	if(1) {
+	  <xsp:element name="true">
+	    <xsp:attribute name="attribute">true</xsp:attribute>
+	  </xsp:element>
+	} 
+	else {      
+	  <xsp:element name="false">
+	    <xsp:attribute name="attribute">false</xsp:attribute>
+	  </xsp:element>
+	}
+      </xsp:logic>
+    </element14>
+
+    <element15>
+      <xsp:logic>
+	if(!1) {
+	  <xsp:element name="true">
+	    <xsp:attribute name="attribute">true</xsp:attribute>
+	  </xsp:element>
+	} 
+	else {      
+	  <xsp:element name="false">
+	    <xsp:attribute name="attribute">false</xsp:attribute>
+	  </xsp:element>
+	}
+      </xsp:logic>
+    </element15>
+
+
+  </elements>
+</xsp:page>
+
+
+
+

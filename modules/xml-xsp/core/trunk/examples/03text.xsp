@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1">
+  <elements>
+    <element1><xsp:text>value</xsp:text></element1>
+    <element2 attribute="value"><xsp:text>value</xsp:text></element2>
+    <element3>value <xsp:text>value</xsp:text> value</element3>
+
+    <element4>
+      <xsp:text><xsp:expr>1+2</xsp:expr></xsp:text>
+    </element4>
+
+    <element5>
+      <xsp:text>
+	<xsp:expr><element>1+2</element></xsp:expr>
+      </xsp:text>
+    </element5>
+
+    <element5>
+      <xsp:expr>
+	<xsp:text><xsp:expr>1+2</xsp:expr></xsp:text>
+      </xsp:expr>
+    </element5>
+
+
+  </elements>
+</xsp:page>

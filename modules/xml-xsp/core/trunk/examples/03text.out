@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<elements>
+    <element1>value</element1>
+    <element2 attribute="value">value</element2>
+    <element3>value value value</element3>
+
+    <element4>
+      3
+    </element4>
+
+    <element5>
+      
+	
+      &lt;element&gt;1+2&lt;/element&gt;
+    </element5>
+
+    <element5>
+      
+      3
+	
+    </element5>
+
+
+  </elements>

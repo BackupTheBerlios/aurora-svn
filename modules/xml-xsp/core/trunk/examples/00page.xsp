@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1">
+  <elements>
+    <element1/>
+    <element2>value</element2>
+    <element3 attribute="value"/>
+    <element4 attribute="value">value</element4>
+  </elements>
+</xsp:page>
