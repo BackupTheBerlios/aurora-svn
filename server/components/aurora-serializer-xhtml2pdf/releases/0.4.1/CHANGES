@@ -1,0 +1,17 @@
+Revision history for Aurora::Component::Pipeline::Serializer::XHTML2PDF
+
+0.4.1 (10-04-2004)
+  - Updated documentation
+
+0.4.0 (02-04-2002)
+  - Renamed module to XHTML2PDF
+  - Ported across to work with new Aurora API
+  - Added documentation
+
+0.2.0 (19-11-2001)
+  - Fixed expires
+  - Minor bug fixes
+
+0.0.1 
+  - Original version
+
