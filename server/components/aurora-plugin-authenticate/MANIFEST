@@ -1,0 +1,10 @@
+CHANGES
+Makefile.PL
+MANIFEST
+README
+test.pl
+lib/Aurora/Component/Plugin/Authenticator.pm
+lib/Aurora/Component/Plugin/Authenticator/Module.pm
+lib/Aurora/Component/Plugin/Authenticator/Module/IP.pm
+lib/Aurora/Component/Plugin/Authenticator/Module/Cookie.pm
+

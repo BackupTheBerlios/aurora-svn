@@ -1,0 +1,22 @@
+Revision history for Aurora::Component::Plugin::Authenticator
+
+0.4.1 (10-04-2004)
+  - Fixed examples in documentation
+
+0.4.0 (24-03-2002)
+  - Ported across to work with new Aurora API
+  - Broken out authenticator modules into seperate files
+  - Added base class for all authenticator modules to inherit
+  - Rewrote cookie authenticator
+  - Improved logging
+  - Added documentation
+
+0.1.4 (19-11-2001)
+  - Now sets context connection user
+
+0.1.3 (12-11-2001)
+  - Updated to work with latest version of Aurora
+
+0.0.1 
+  - Original version
+
