@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<elements>
+    <element1 attribute="value"/>
+
+    <element2 attribute="value">
+      
+    </element2>
+
+    <element3 attribute="value">
+      
+	value
+    </element3>
+
+    <element4 attribute="3">
+      
+	value
+    </element4>
+
+    <element5 attribute="&lt;element&gt;1+2&lt;/element&gt;">
+      
+	value
+    </element5>
+
+    <element6 attribute1="&lt;element&gt;1+2&lt;/element&gt;" attribute2="3">
+      
+      
+	value
+    </element6>
+
+    <element7 xmlns:myprefix="http://localhost/namespace/mynamespace" myprefix:attribute="value">
+      
+       
+    </element7>
+
+    <element8 attribute="true">
+      
+    </element8>
+
+
+    <element9 attribute="false">
+      
+    </element9>
+
+  </elements>

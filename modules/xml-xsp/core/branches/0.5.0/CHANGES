@@ -1,0 +1,63 @@
+Revision history for XML::XSP
+
+0.4.2 (10-04-2004)
+  - Fixed XML::XSP::Driver::LibXSLT to handle dealing with document
+    fragments
+  - Updated LibXSLT driver to work with XML::LibXML 1.56/XML::LibXSLT 1.53
+  - Fixed md5_hex warning with URI references 
+  - Fixed xsp:attribute & xsp:element tags when nested in xsp:logic & xsp:expr tags
+  - Added extra test cases
+  - Updated copyright notice
+  - Fixed xsp:page language bug
+  - Added real xsp:page & fixed append to document root bug
+
+0.4.1 (13-05-2002)
+  - Fixed XML::XSP::Driver::LibXSLT file handler bug
+  - Tweaked logging output
+  - Fixed internal state inconsistences when an exception is thrown
+    with a page
+  - Fixed exception handling in test scripts
+  - Disabled memory test by default
+  - Updated LibXSLT driver to work with XML::LibXML 1.49
+
+0.4.0 (25-02-2002)
+  - Fix logging to deal with exceptions objects
+  - Added documentation
+  - Fixed XML::XSP::Driver::LibXSLT to better survive forking
+
+0.3.1 (23-02-2002)
+  - We now keep cache internal all pages compiled against a URI
+  - Added first pass at page unloader
+  - Added xsp:comment, xsp:pi, xsp:content
+
+0.3.0 (23-02-2002)
+  - Added XML::XSP::Log to handle logging
+  - Added option to set callback for the log handler
+  - Added Taglib option to Page, to disable application of Taglibs
+    stylesheet
+  - Added XML::XSP::Exception
+  - Cleaned up internal API
+  - Added improved test harness
+
+0.2.1 (07-02-2002)
+  - Moved over to using XML::LibXML & XML::LibXSLT 1.30
+  - Fixed recusive calling of cached xsp:logic page segmentation fault
+  - xsp:page now apply-templates to attributes
+
+0.2.0 (19-11-2001)
+  - Fixed bug with <xsp:expr></xsp:expr>
+  - Fixed bug for deep nested <xsp:logic> & <xsp:expr>
+  - Added example test checking
+  - Added memory leak testing
+  - Fixed taglib support in CORE
+  - Added as-string & as-expr helper templates
+  - Cleaned up MANIFEST
+
+0.0.5 (25-10-2001)
+  - Added xsp:text support
+  - Added xsp:logic support
+  - Added namespacing option for xsp::attribute & xsp:element
+  - Fixed recursive xsp tag behaviour
+
+0.0.1 
+  - Original version

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<elements>
+    <element1/>
+
+    <element2>value</element2>
+
+    <element3><element>value</element></element3>
+
+    <element4>
+      <element attribute="value">value</element>
+    </element4>
+
+    <element5>
+      <element>value</element>
+    </element5>
+
+    <element6>
+      <element xmlns:xsp="http://apache.org/xsp/core/v1"><element>value</element></element>
+    </element6>
+
+    <element7 attribute="value">
+      
+    </element7>
+
+
+    <element8 attribute="value">
+      
+      
+    <element>value</element><element>value</element><element>value</element></element8>
+
+    <element9 attribute="value">
+      
+      
+    <element>value</element><element>value</element></element9>
+
+    <element10 attribute="value">
+      
+      <element xmlns:xsp="http://apache.org/xsp/core/v1">0</element>
+    <element xmlns:xsp="http://apache.org/xsp/core/v1">1</element><element xmlns:xsp="http://apache.org/xsp/core/v1">2</element></element10>
+
+    <element11 xmlns:myprefix="http://localhost/namespaces/mynamespace" attribute1="value" myprefix:attribute2="value">
+      
+      
+    </element11>
+
+    <myprefix1:element12 xmlns:myprefix1="http://localhost/namespaces/mynamespace1" xmlns:myprefix2="http://localhost/namespaces/mynamespace2" myprefix1:attribute1="value" myprefix2:attribute2="value">
+      
+      
+    </myprefix1:element12>
+
+
+    <element13>
+      
+    <true/></element13>
+
+    <element14>
+      
+    <true attribute="true">
+	    
+	  </true></element14>
+
+    <element15>
+      
+    <false attribute="false">
+	    
+	  </false></element15>
+
+
+  </elements>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<other>    
+    <?target1 name="value"?>
+    <!--This is a comment-->
+    <?target2 name="value"?>
+    <!--This is a comment-->
+    <content>
+      
+    <node/></content>
+  </other>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<elements>
+    
+
+    <element2>    
+      
+    </element2>
+	
+    <element3 attribute="value">
+      a
+    </element3>
+
+    <element4>
+      45
+    </element4>
+
+    <element5>    
+      
+    <element/><element/><element/></element5>
+
+    <element6>
+      
+    <element/><element/><element/></element6>
+
+
+    <element7>    
+      
+    <element xmlns:xsp="http://apache.org/xsp/core/v1">0</element><element xmlns:xsp="http://apache.org/xsp/core/v1">1</element><element xmlns:xsp="http://apache.org/xsp/core/v1">2</element></element7>
+
+    <element8>    
+      
+    <element xmlns:xsp="http://apache.org/xsp/core/v1">0</element><element xmlns:xsp="http://apache.org/xsp/core/v1">1</element><element xmlns:xsp="http://apache.org/xsp/core/v1">2</element></element8>
+
+    <element9>
+      
+    <element xmlns:xsp="http://apache.org/xsp/core/v1">0</element><element xmlns:xsp="http://apache.org/xsp/core/v1">1</element><element xmlns:xsp="http://apache.org/xsp/core/v1">2</element></element9>
+
+    <element10>
+      
+    <element xmlns:xsp="http://apache.org/xsp/core/v1">0</element><element xmlns:xsp="http://apache.org/xsp/core/v1">1</element><element xmlns:xsp="http://apache.org/xsp/core/v1">2</element><element xmlns:xsp="http://apache.org/xsp/core/v1"></element></element10>
+    
+    <element11>
+      
+    <element xmlns:xsp="http://apache.org/xsp/core/v1">0</element><element xmlns:xsp="http://apache.org/xsp/core/v1">1</element><element xmlns:xsp="http://apache.org/xsp/core/v1">2</element></element11>
+   
+    <element12>
+      
+    <element/></element12>
+
+    <element13>
+      
+    <true/></element13>
+
+    <element14>
+      
+    <false/></element14>
+ 
+  </elements>

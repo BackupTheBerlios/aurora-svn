@@ -1,0 +1,41 @@
+<!ENTITY % elements "xsp:expr | 
+                     xsp:element | 
+                     xsp:pi | 
+                     xsp:comment">
+
+<!ELEMENT xsp:page (xsp:structure?, xsp:logic?, xsp:content)>
+<!ATTLIST xsp:page
+  language CDATA #REQUIRED
+  indent-result (yes|no) "no"
+  xmlns:xsp CDATA #FIXED "http://www.apache.org/1999/XSP/Core"
+  xml:space (default|preserve) "preserve"
+>
+
+<!ELEMENT xsp:structure (xsp:dtd?, xsp:include*)>
+
+<!ELEMENT xsp:dtd (#PCDATA)>
+<!ELEMENT xsp:include (#PCDATA)>
+
+<!ELEMENT xsp:content (#PCDATA | xsp:logic | %elements;)*>
+
+<!ELEMENT xsp:logic (#PCDATA | xsp:content | %element;)*>
+<!ATTLIST xsp:logic xml:space (default|preserve) "preserve">
+
+<!ELEMENT xsp:element
+          (#PCDATA | 
+          xsp:attribute | 
+          xsp:element | 
+          xsp:logic |
+          xsp:expr)*>
+<!ATTLIST xsp:element
+          name CDATA #REQUIRED>
+
+<!ELEMENT xsp:attribute (#PCDATA | xsp:expr)>
+<!ATTLIST xsp:attribute 
+          name CDATA #REQUIRED
+          xml:space (default|preserve) "preserve">
+
+<!ELEMENT xsp:pi (#PCDATA | xsp:expr>
+<!ELEMENT xsp:comment (#PCDATA | xsp:expr)>
+<!ELEMENT xsp:expr (#PCDATA)> 
+
