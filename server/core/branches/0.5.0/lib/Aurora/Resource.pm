@@ -51,7 +51,7 @@ use Aurora::Resource::RIB;
 	}
 	throw Aurora::Exception::Event
 	  (-event => NOT_FOUND,
-	   -text  => (join '', 'File not found: ', $!));
+	   -text  => (join '', 'File not found: ', $uri));
       };
       ($uri =~ m/^http(s)?:\/\//) && do {
 	my ($agent, $request, $response);
@@ -77,7 +77,7 @@ use Aurora::Resource::RIB;
 	}
 	throw Aurora::Exception::Event
 	  (-event => NOT_FOUND,
-	   -text  => 'File not found');
+	   -text  => 'File not found: ', $uri);
       };
       do {
 	throw Aurora::Exception::Event
@@ -118,7 +118,7 @@ use Aurora::Resource::RIB;
 	}
 	throw Aurora::Exception::Event
 	  ( -event => NOT_FOUND,
-	    -text  => ("File not found ", $!))
+	    -text  => ("File not found: ", $uri))
       };
       ($uri =~ m/^http(s)?:\/\//) && do {
 	my ($agent, $request, $response);
@@ -133,7 +133,7 @@ use Aurora::Resource::RIB;
 	}
 	throw Aurora::Exception::Event
 	  ( -event => NOT_FOUND,
- 	    -text  => 'File not found');
+ 	    -text  => 'File not found: ', $uri);
       };
       do {
 	throw Aurora::Exception::Event
