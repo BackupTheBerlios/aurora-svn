@@ -4,7 +4,6 @@ use strict;
 use HTTP::Date;
 use HTTP::Response;
 use HTTP::Headers;
-use HTTP::Status;
 
 use Aurora::Log;
 use Aurora::Util qw/urlencode/;
@@ -20,6 +19,9 @@ use overload q/""/ => sub {
   my ($self) = @_;
   return $self->as_string;
 };
+
+
+require HTTP::Status;
 
 sub new {
   my ($class, $headers, $self);
@@ -274,9 +276,16 @@ sub new {
 }
 
 sub as_string {
-  my ($self, %options) = @_;
-  my ($string);
+  my ($self, $string, %options);
+
+  $self = shift;
+  {
+    no warnings;
+    %options = (scalar @_)? @_ : ();
+  }
   $string = $self->{data};
+
+
   if($options{charset} && (lc $options{charset} ne $self->{charset})) {
     $string = str2charset($string, $self->{charset}, $options{charset});
   }

@@ -14,7 +14,7 @@ use vars qw/$VERSION $DEBUG/;
 
 {
   my ($driver, $servers);
-  $VERSION = '0.4.2';
+  $VERSION = '0.5.0';
   $DEBUG = 3;
 
  SWITCH: {
