@@ -1,0 +1,14 @@
+Revision history for XML::XSP::Taglib::ESQL
+
+0.2.1 (10-04-2004)
+  - Fixed esql:get-xml() & esql:get-columns tags
+  - Updated documentation
+
+0.2.0 (19-11-2001)
+  - Tweaked test harness
+  - Cleaned up stylesheet
+  - Moved over to using as-expr helper template
+
+0.0.1 
+  - Original version
+

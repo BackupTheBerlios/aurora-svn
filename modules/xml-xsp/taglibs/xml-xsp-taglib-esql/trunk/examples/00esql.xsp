@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:esql="http://apache.org/xsp/SQL/v2">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <esql:connection>
+      <esql:driver>Pg</esql:driver>
+      <esql:dburl>dbname=rdf</esql:dburl>
+      <esql:execute-query>
+	<esql:query>
+	  SELECT	      
+	  n1.value || r1.name as subject,
+	  n2.value || r2.name as predicate,
+	  CASE t.objtype
+	  WHEN 1 THEN l.value 
+	  WHEN 2 THEN n3.value || r3.name
+	  END as object,
+	  t.objtype
+	  FROM triples t
+	  LEFT JOIN literals l  ON t.object=l.hash 
+	  LEFT JOIN resources r3 ON t.object=r3.hash
+	  LEFT JOIN namespaces n3 ON r3.ns=n3.hash, 
+	  resources r1,
+	  resources r2,
+	  namespaces n1,
+	  namespaces n2 
+	  WHERE t.subject=r1.hash AND 
+	  r1.ns=n1.hash AND 
+	  t.predicate=r2.hash AND
+	  r2.ns=n2.hash
+	</esql:query>
+	<esql:max-rows>5</esql:max-rows>
+	<esql:results>
+	  <rdf:RDF>
+	  <esql:row-results>
+	    <rdf:Statement>
+	    <rdf:predicate><esql:get-string column="predicate"/></rdf:predicate>	      	      
+	    <rdf:subject><esql:get-string column="subject"/></rdf:subject>	      
+	      </rdf:Statement>
+	  </esql:row-results>
+	    </rdf:RDF>
+	</esql:results>
+	<esql:no-results>
+	<error>NO ROW</error>
+	</esql:no-results>
+      </esql:execute-query>
+    </esql:connection>
+  </rdf:RDF>
+</xsp:page>
+
+
