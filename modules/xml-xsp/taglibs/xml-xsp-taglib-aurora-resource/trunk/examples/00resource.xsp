@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<xsp:page language="perl"
+  xmlns:xsp="http://apache.org/xsp/core/v1"
+  xmlns:resource="http://iterx.org/xsp/aurora/resource/v1">
+  <tests>
+    <test1><resource:fetch uri="examples/test.xml" /></test1>
+    <test2><resource:fetch uri="examples/test.txt" /></test2>
+    <test3>
+      <resource:fetch>
+	<resource:uri>examples/test.xml</resource:uri>
+      </resource:fetch>
+    </test3>
+    <test4>
+      <resource:fetch>
+	<resource:uri>examples/test.xml</resource:uri>
+	<resource:base>file://<xsp:expr>Cwd::getcwd()</xsp:expr></resource:base>
+      </resource:fetch>
+    </test4>
+
+    <test5><resource:is-valid uri="examples/test.txt"/></test5>    
+
+    <test6><resource:exists uri="examples/test.txt"/></test6>
+    <test7><resource:exists uri="examples/notfound.txt"/></test7>
+  </tests>
+</xsp:page>

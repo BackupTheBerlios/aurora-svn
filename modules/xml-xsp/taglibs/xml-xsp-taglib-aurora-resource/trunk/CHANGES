@@ -1,0 +1,24 @@
+Revision history for XML::XSP::Taglib::Aurora::Resource
+
+0.4.2 (10-04-2004)
+  - Fixed uri base bug
+  - Fixed warnings under Perl 5.8
+  - Updated documentation
+
+0.4.1 (13-05-2002)
+  - Updated module dependancies
+  - Fixed taglib to work with XML::LibXML 1.49
+
+0.4.0 (31-03-2002)
+  - Updated to work with latest XSP API
+  - Added documentation
+
+0.2.1 (04-01-2002)
+  - Added missing files from MANIFEST
+  - Strip whitespace from incomming uri/base
+  - Changed namespace
+  - Cleaned up files
+
+0.2.0 
+  - Original version
+
