@@ -1,0 +1,49 @@
+#!/usr/bin/perl -w
+
+eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+    if $running_under_some_shell;
+
+use strict;
+
+use Pod::Usage;
+use Getopt::Long;
+use Aurora::HTTPD;
+
+my (%options, $httpd);
+GetOptions('help|?|h' => \$options{'Help'},
+           'port|p=i' => \$options{'Port'},
+           'max|m=i'  => \$options{'MaxServer'},
+	   'debug=i'  => \$options{'Debug'},
+	   'conf=s'   => \$options{'Conf'},
+	   'accesslog=s' => \$options{'AccessLog'},
+	   'errorlog=s'  => \$options{'ErrorLog'}
+	  );
+push @{$options{Aurora}}, @ARGV;
+
+pod2usage(1)
+  if $options{Help} || scalar @{$options{Aurora}} == 0;
+$httpd = Aurora::HTTPD->new(%options);
+$httpd->run;
+exit;
+
+=pod
+
+=head1 NAME
+
+aurora-httpd - A lightweight HTTPD for Aurora.
+
+=head1 SYNOPSIS
+
+aurora-httpd [options] files...
+
+  --help       prints this message
+  --debug      set the verbosity of the log messages
+
+  --conf       specify the location of an external configuration file
+
+  --port       the server port to use
+  --max        maximum number of processes
+  --accesslog  specify the location of the access log
+  --errorlog   specify the location of the error log
+
+=cut
